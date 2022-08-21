@@ -142,7 +142,7 @@ targets.append(contentsOf: [
             .target(name: "PeripheryKit"),
             .target(name: "XcodeSupport")
         ],
-        exclude: ["UIKitProject", "SwiftUIProject"]
+        exclude: ["CocoaPodsProject", "UIKitProject", "SwiftUIProject"]
     )
 ])
 #endif

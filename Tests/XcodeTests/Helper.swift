@@ -2,6 +2,10 @@ import Foundation
 import SystemPackage
 @testable import TestShared
 
+var CocoaPodsProjectPath: FilePath {
+    return ProjectRootPath.appending("Tests/XcodeTests/CocoaPodsProject/CocoaPodsProject.xcworkspace")
+}
+
 var UIKitProjectPath: FilePath {
     return ProjectRootPath.appending("Tests/XcodeTests/UIKitProject/UIKitProject.xcodeproj")
 }

@@ -49,7 +49,7 @@ final class XcodeProject: XcodeProjectlike {
             throw PeripheryError.underlyingError(error)
         }
 
-        // Cache before loading sub-projects to avoid infinate loop from cyclic project references.
+        // Cache before loading sub-projects to avoid infinite loop from cyclic project references.
         XcodeProject.cache[path] = self
 
         var subProjects: [XcodeProject] = []

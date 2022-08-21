@@ -1,0 +1,6 @@
+platform :ios, '15.5'
+
+target 'CocoaPodsProject' do
+  use_frameworks!
+  pod 'TestDevelopmentPod', path: 'DevelopmentPods/TestDevelopmentPod'
+end
