@@ -23,9 +23,9 @@ public final class SourceGraph {
     public private(set) var assignOnlyProperties: Set<Declaration> = []
     public private(set) var extensions: [Declaration: Set<Declaration>] = [:]
 
-    private var allDeclarationsByKind: [Declaration.Kind: Set<Declaration>] = [:]
-    private var allExplicitDeclarationsByUsr: [String: Declaration] = [:]
-    private var moduleToExportingModules: [String: Set<String>] = [:]
+    public var allDeclarationsByKind: [Declaration.Kind: Set<Declaration>] = [:]
+    public var allExplicitDeclarationsByUsr: [String: Declaration] = [:]
+    public var moduleToExportingModules: [String: Set<String>] = [:]
 
     private let lock = UnfairLock()
     private let configuration: Configuration
