@@ -1,5 +1,5 @@
-final class Reference {
-    enum Role {
+public final class Reference {
+    public enum Role {
         case varType
         case returnType
         case parameterType
@@ -23,14 +23,14 @@ final class Reference {
         }
     }
 
-    let location: SourceLocation
-    let kind: Declaration.Kind
-    let isRelated: Bool
-    var name: String?
-    var parent: Declaration?
-    var references: Set<Reference> = []
-    let usr: String
-    var role: Role = .unknown
+    public let location: SourceLocation
+    public let kind: Declaration.Kind
+    public let isRelated: Bool
+    public var name: String?
+    public var parent: Declaration?
+    public var references: Set<Reference> = []
+    public let usr: String
+    public var role: Role = .unknown
 
     private let hashValueCache: Int
 
@@ -48,25 +48,25 @@ final class Reference {
 }
 
 extension Reference: Hashable {
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(hashValueCache)
     }
 }
 
 extension Reference: Equatable {
-    static func == (lhs: Reference, rhs: Reference) -> Bool {
+    public static func == (lhs: Reference, rhs: Reference) -> Bool {
         lhs.usr == rhs.usr && lhs.location == rhs.location && lhs.isRelated == rhs.isRelated
     }
 }
 
 extension Reference: CustomStringConvertible {
-    var description: String {
+    public var description: String {
         let referenceType = isRelated ? "Related" : "Reference"
 
         return "\(referenceType)(\(descriptionParts.joined(separator: ", ")))"
     }
 
-    var descriptionParts: [String] {
+    public var descriptionParts: [String] {
         let formattedName = name != nil ? "'\(name!)'" : "nil"
 
         return [kind.rawValue, formattedName, "'\(usr)'", location.shortDescription]
@@ -74,7 +74,7 @@ extension Reference: CustomStringConvertible {
 }
 
 extension Reference: Comparable {
-    static func < (lhs: Reference, rhs: Reference) -> Bool {
+    public static func < (lhs: Reference, rhs: Reference) -> Bool {
         lhs.location < rhs.location
     }
 }

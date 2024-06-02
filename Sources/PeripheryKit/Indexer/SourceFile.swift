@@ -1,10 +1,10 @@
 import Foundation
 import SystemPackage
 
-class SourceFile {
-    let path: FilePath
-    let modules: Set<String>
-    var importStatements: [ImportStatement] = []
+public class SourceFile {
+    public let path: FilePath
+    public let modules: Set<String>
+    public var importStatements: [ImportStatement] = []
 
     init(path: FilePath, modules: Set<String>) {
         self.path = path
@@ -13,19 +13,19 @@ class SourceFile {
 }
 
 extension SourceFile: Hashable {
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(path)
     }
 }
 
 extension SourceFile: Equatable {
-    static func == (lhs: SourceFile, rhs: SourceFile) -> Bool {
+    public static func == (lhs: SourceFile, rhs: SourceFile) -> Bool {
         lhs.path == rhs.path
     }
 }
 
 extension SourceFile: Comparable {
-    static func < (lhs: SourceFile, rhs: SourceFile) -> Bool {
+    public static func < (lhs: SourceFile, rhs: SourceFile) -> Bool {
         lhs.path.string < rhs.path.string
     }
 }

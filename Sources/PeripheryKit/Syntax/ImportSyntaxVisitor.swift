@@ -1,11 +1,11 @@
 import Foundation
 import SwiftSyntax
 
-struct ImportStatement {
-    let module: String
-    let isTestable: Bool
-    let isExported: Bool
-    let location: SourceLocation
+public struct ImportStatement {
+    public let module: String
+    public let isTestable: Bool
+    public let isExported: Bool
+    public let location: SourceLocation
 }
 
 final class ImportSyntaxVisitor: PeripherySyntaxVisitor {

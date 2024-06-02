@@ -1,7 +1,7 @@
 import Foundation
 
-final class Declaration {
-    enum Kind: String, RawRepresentable, CaseIterable {
+public final class Declaration {
+    public enum Kind: String, RawRepresentable, CaseIterable {
         case `associatedtype` = "associatedtype"
         case `class` = "class"
         case `enum` = "enum"
@@ -208,24 +208,24 @@ final class Declaration {
         }
     }
 
-    let location: SourceLocation
-    var attributes: Set<String> = []
-    var modifiers: Set<String> = []
-    var accessibility: DeclarationAccessibility = .init(value: .internal, isExplicit: false)
-    let kind: Kind
-    var name: String?
-    let usrs: Set<String>
-    var unusedParameters: Set<Declaration> = []
-    var declarations: Set<Declaration> = []
-    var commentCommands: Set<CommentCommand> = []
-    var references: Set<Reference> = []
-    var declaredType: String?
-    var hasCapitalSelfFunctionCall: Bool = false
-    var hasGenericFunctionReturnedMetatypeParameters: Bool = false
-    var parent: Declaration?
-    var related: Set<Reference> = []
-    var isImplicit: Bool = false
-    var isObjcAccessible: Bool = false
+    public let location: SourceLocation
+    public var attributes: Set<String> = []
+    public var modifiers: Set<String> = []
+    public var accessibility: DeclarationAccessibility = .init(value: .internal, isExplicit: false)
+    public let kind: Kind
+    public var name: String?
+    public let usrs: Set<String>
+    public var unusedParameters: Set<Declaration> = []
+    public var declarations: Set<Declaration> = []
+    public var commentCommands: Set<CommentCommand> = []
+    public var references: Set<Reference> = []
+    public var declaredType: String?
+    public var hasCapitalSelfFunctionCall: Bool = false
+    public var hasGenericFunctionReturnedMetatypeParameters: Bool = false
+    public var parent: Declaration?
+    public var related: Set<Reference> = []
+    public var isImplicit: Bool = false
+    public var isObjcAccessible: Bool = false
 
     private let hashValueCache: Int
 
@@ -293,19 +293,19 @@ final class Declaration {
 }
 
 extension Declaration: Hashable {
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(hashValueCache)
     }
 }
 
 extension Declaration: Equatable {
-    static func == (lhs: Declaration, rhs: Declaration) -> Bool {
+    public static func == (lhs: Declaration, rhs: Declaration) -> Bool {
         lhs.usrs == rhs.usrs
     }
 }
 
 extension Declaration: CustomStringConvertible {
-    var description: String {
+    public var description: String {
         "Declaration(\(descriptionParts.joined(separator: ", ")))"
     }
 
@@ -329,7 +329,7 @@ extension Declaration: CustomStringConvertible {
 }
 
 extension Declaration: Comparable {
-    static func < (lhs: Declaration, rhs: Declaration) -> Bool {
+    public static func < (lhs: Declaration, rhs: Declaration) -> Bool {
         if lhs.location == rhs.location {
             return lhs.usrs.sorted().joined() < rhs.usrs.sorted().joined()
         }
@@ -338,9 +338,9 @@ extension Declaration: Comparable {
     }
 }
 
-struct DeclarationAccessibility {
-    let value: Accessibility
-    let isExplicit: Bool
+public struct DeclarationAccessibility {
+    public let value: Accessibility
+    public let isExplicit: Bool
 
     func isExplicitly(_ testValue: Accessibility) -> Bool {
         isExplicit && value == testValue

@@ -1,7 +1,7 @@
 import Foundation
 import SwiftSyntax
 
-enum CommentCommand: CustomStringConvertible, Hashable {
+public enum CommentCommand: CustomStringConvertible, Hashable {
     case ignore
     case ignoreAll
     case ignoreParameters([String])
@@ -42,7 +42,7 @@ enum CommentCommand: CustomStringConvertible, Hashable {
         return nil
     }
 
-    var description: String {
+    public var description: String {
         switch self {
         case .ignore:
             return "ignore"

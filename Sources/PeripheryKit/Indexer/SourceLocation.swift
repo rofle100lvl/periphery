@@ -1,9 +1,9 @@
 import Foundation
 
-class SourceLocation {
-    let file: SourceFile
-    let line: Int
-    let column: Int
+public class SourceLocation {
+    public let file: SourceFile
+    public let line: Int
+    public let column: Int
 
     private let hashValueCache: Int
 
@@ -30,30 +30,30 @@ class SourceLocation {
 }
 
 extension SourceLocation: Equatable {
-    static func == (lhs: SourceLocation, rhs: SourceLocation) -> Bool {
+    public static func == (lhs: SourceLocation, rhs: SourceLocation) -> Bool {
         lhs.file == rhs.file && lhs.line == rhs.line && lhs.column == rhs.column
     }
 }
 
 extension SourceLocation: Hashable {
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
 
         hasher.combine(hashValueCache)
     }
 }
 
 extension SourceLocation: CustomStringConvertible {
-    var description: String {
+    public var description: String {
         return descriptionInternal
     }
 
-    var shortDescription: String {
+    public var shortDescription: String {
         return shortDescriptionInternal
     }
 }
 
 extension SourceLocation: Comparable {
-    static func < (lhs: SourceLocation, rhs: SourceLocation) -> Bool {
+    public static func < (lhs: SourceLocation, rhs: SourceLocation) -> Bool {
         if lhs.file == rhs.file {
             if lhs.line == rhs.line {
                 return lhs.column < rhs.column
