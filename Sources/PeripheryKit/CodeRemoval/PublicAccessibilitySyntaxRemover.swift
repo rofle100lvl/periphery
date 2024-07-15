@@ -2,6 +2,7 @@ import Foundation
 import SourceGraph
 import SwiftParser
 import SwiftSyntax
+import SyntaxAnalyse
 import SystemPackage
 
 final class PublicAccessibilitySyntaxRemover: SyntaxRewriter, SyntaxRemover {

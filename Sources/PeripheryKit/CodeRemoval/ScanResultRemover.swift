@@ -3,6 +3,7 @@ import SwiftParser
 import SwiftSyntax
 import Shared
 import SystemPackage
+import SyntaxAnalyse
 import SourceGraph
 
 public final class ScanResultRemover {

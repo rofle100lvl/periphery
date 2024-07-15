@@ -2,6 +2,7 @@ import Foundation
 import SwiftParser
 import SwiftSyntax
 import SystemPackage
+import SyntaxAnalyse
 import SourceGraph
 
 final class UnusedDeclarationSyntaxRemover: SyntaxRewriter, SyntaxRemover, TriviaSplitting {
