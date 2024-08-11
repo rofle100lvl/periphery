@@ -11,3 +11,4 @@ targets:
 - SourceGraph
 - SyntaxAnalysis
 - Indexer
+- ProjectDriverSupport

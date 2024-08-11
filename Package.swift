@@ -24,6 +24,7 @@ var frontendDependencies: [PackageDescription.Target.Dependency] = [
     .target(name: "Shared"),
     .target(name: "SourceGraph"),
     .target(name: "PeripheryKit"),
+    .target(name: "ProjetDrivers"),
     .product(name: "ArgumentParser", package: "swift-argument-parser"),
     .product(name: "FilenameMatcher", package: "swift-filename-matcher")
 ]
@@ -36,6 +37,15 @@ var targets: [PackageDescription.Target] = [
     .executableTarget(
         name: "Frontend",
         dependencies: frontendDependencies
+    ),
+    .target(
+      name: "ProjetDrivers",
+      dependencies: [
+        .target(name: "SourceGraph"),
+        .target(name: "Shared"),
+        .target(name: "Indexer"),
+        .target(name: "XcodeSupport"),
+      ]
     ),
     .target(
         name: "PeripheryKit",

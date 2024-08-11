@@ -1,8 +1,8 @@
 import Foundation
 import SystemPackage
-import PeripheryKit
+import Shared
 
-protocol XcodeProjectlike: AnyObject {
+public protocol XcodeProjectlike: AnyObject {
     var path: FilePath { get }
     var targets: Set<XcodeTarget> { get }
     var packageTargets: [SPM.Package: Set<SPM.Target>] { get }
@@ -14,7 +14,7 @@ protocol XcodeProjectlike: AnyObject {
 }
 
 extension XcodeProjectlike {
-    var name: String {
+    public var name: String {
         return path.lastComponent?.stem ?? ""
     }
 }

@@ -1,6 +1,6 @@
 import Foundation
+import XcodeSupport
 import SystemPackage
-import PeripheryKit
 import Shared
 import SourceGraph
 import Indexer

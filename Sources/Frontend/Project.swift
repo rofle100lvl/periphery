@@ -1,4 +1,5 @@
 import Foundation
+import ProjetDrivers
 import SystemPackage
 import PeripheryKit
 import Shared
@@ -7,7 +8,7 @@ import Shared
 import XcodeSupport
 #endif
 
-final class Project {
+public final class Project {
     static func identify() -> Self {
         let configuration = Configuration.shared
 

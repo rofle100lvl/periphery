@@ -1,9 +1,8 @@
 import Foundation
 import SystemPackage
-import Shared
 
 public struct SPM {
-    static let packageFile = "Package.swift"
+    public static let packageFile = "Package.swift"
 
     public static var isSupported: Bool {
         FilePath.current.appending(packageFile).exists
@@ -40,16 +39,16 @@ public struct SPM {
             targets.filter(\.isSwiftTarget)
         }
 
-        func clean() throws {
+        public func clean() throws {
             try Shell.shared.exec(["swift", "package", "clean"])
         }
     }
 
     public struct Target: Decodable {
         public let name: String
+        public let sources: [String]
+        public let path: String
 
-        let sources: [String]
-        let path: String
         let moduleType: String
         let type: String
 
@@ -58,7 +57,7 @@ public struct SPM {
             return sources.map { root.appending($0) }
         }
 
-        func build(additionalArguments: [String]) throws {
+      public func build(additionalArguments: [String]) throws {
             let args: [String] = ["swift", "build", "--target", name] + additionalArguments
             try Shell.shared.exec(args)
         }

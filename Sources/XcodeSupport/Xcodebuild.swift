@@ -22,7 +22,7 @@ public final class Xcodebuild {
     }
 
     @discardableResult
-    func build(project: XcodeProjectlike, scheme: String, allSchemes: [String], additionalArguments: [String] = [], buildForTesting: Bool = false) throws -> String {
+    public func build(project: XcodeProjectlike, scheme: String, allSchemes: [String], additionalArguments: [String] = [], buildForTesting: Bool = false) throws -> String {
         let cmd = buildForTesting ? "build-for-testing" : "build"
         let args = [
             "-\(project.type)", "'\(project.path.lexicallyNormalized().string)'",
@@ -44,11 +44,11 @@ public final class Xcodebuild {
         return try shell.exec(["/bin/sh", "-c", xcodebuild])
     }
 
-    func removeDerivedData(for project: XcodeProjectlike, allSchemes: [String]) throws {
+    public func removeDerivedData(for project: XcodeProjectlike, allSchemes: [String]) throws {
         try shell.exec(["rm", "-rf", try derivedDataPath(for: project, schemes: allSchemes).string])
     }
 
-    func indexStorePath(project: XcodeProjectlike, schemes: [String]) throws -> FilePath {
+    public func indexStorePath(project: XcodeProjectlike, schemes: [String]) throws -> FilePath {
         let derivedDataPath = try derivedDataPath(for: project, schemes: schemes)
         let pathsToTry = ["Index.noindex/DataStore", "Index/DataStore"]
             .map { derivedDataPath.appending($0) }
